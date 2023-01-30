@@ -1,0 +1,128 @@
+def regex_matchings(s,p):
+   if len(p)==0:
+      return (len(s)==0
+   if len(p) ==1 or p[1]!='*':
+      if(len(s)==0 or (s[0] !=p[0] and p[0]1='.')):
+         return False
+      return regex_matching(s[1:],p[1:])
+   if regex_matching(s,p[2:]):
+      return True
+   i =0
+   while(i<len(s) and (s[i+1:],p[2:]):
+      if regex_matching(s[i+1:],p[2:]):
+         return True
+      i +=1
+   return False
+s=input("enter a variable")
+p=input("enter a variable")
+if (regex_matching(s,p)):
+   print("true")
+else:
+   print("false")
+ 13  
+day 2 programs/day 2-1st que
+@@ -0,0 +1,13 @@
+def fib(n,dp):
+   if (n<=1):
+      return 1
+   if(dp[n]!=1):
+      return dp[n]
+   dp[n]=fib(n-1,dp)+fib(n-2,dp)
+   return dp[n]
+def countWays(n):
+   dp=[1 for i in range(n+1)]
+   fib(n,dp)
+   return dp[n]
+n=int(input("enter a no.="))
+print("Number of ways=" + str(countWays(n)))
+ 11  
+day 2 programs/day 2-2nd que
+@@ -0,0 +1,11 @@
+y=float(input("enter a year:"))
+if(y==1936):
+   print("enter a valid year")
+elif(y==0):
+   print("enter a valid year")
+elif(y%400==0)&(y%100!=0):
+   print("The given year is leap year")
+elif(y%4==0):
+   print("The given year is leap year")
+else:
+   print("The given year is not leap year")
+ 10  
+day 2 programs/day 2-3rd que
+@@ -0,0 +1,10 @@
+import re
+text=input("enter a sentence")
+def foo(txt):
+   max_count=0
+   for i in re.split('[!.?]',txt):
+      if len(i.split()) > max_count:
+         max_count =len(i.split())
+   return max_count
+
+print(foo(text))
+ 3  
+day 2 programs/day 2-4th que
+@@ -0,0 +1,3 @@
+a1=[1,2,4]
+a2=[1,3,4]
+print(sorted(a1+a2))
+ 32  
+day 2 programs/day 2-5th que
+@@ -0,0 +1,32 @@
+def calculate(s:str)-> int:
+   stack=[]
+   num=0
+sign=1
+result=0
+for c in s:
+   if c.isdigit():
+      num=num*10+int(c)
+   elif c in "+-":
+      result += sign*num
+      num=0
+      sign=1 if c=="+" else -1
+   elif c=="*":
+      stack.append(result)
+      stack.append(sign)
+      sign =1
+      result =num
+      num =0
+   elif c=="/":
+      stack.append(result)
+      stack.append(sign)
+      sign =1
+      result=num
+      num=0
+   if num:
+      result +=sign*num
+   while stack:
+      result*=stack.pop()
+      result +=stack.pop()
+   return result
+
+
+ 22  
+day 2 programs/day 2-9th que
+@@ -0,0 +1,22 @@
+month=input("enter the month:")
+day=int(input("enter the day:"))
+
+if month in('January','February','March'):
+   season='winter'
+elif month in('April','May','June'):
+   season='summer'
+elif month in ('July','August','September'):
+   season='spring'
+else:
+   season='fall'
+
+if(month=='March') and (day>1):
+   season='summer'
+elif(month=='June')and (day>1):
+   season='spring'
+elif(month=='September') and (day>1):
+   season='fall'
+elif(month=='December') and (day>1):
+   season='winter'
